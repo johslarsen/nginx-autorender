@@ -35,7 +35,7 @@ cat <<EOF
       // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
       // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
       // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-      `curl https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/github.min.css`
+      `curl https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@v11.8.0/build/styles/github.min.css`
 
       // The MIT License (MIT)
       //
@@ -58,9 +58,12 @@ cat <<EOF
       // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
       // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
       // SOFTWARE.
-      `curl https://cdn.bootcdn.net/ajax/libs/milligram/1.4.1/milligram.min.css`
+      `curl https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css | grep -v sourceMappingURL`
     </style>
     <script type="application/javascript">
+      // https://github.com/highlightjs/highlight.js:
+      `curl https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@v11.8.0/build/highlight.min.js`
+
       // https://github.com/markedjs/marked:
       // Copyright (c) 2018+, MarkedJS (https://github.com/markedjs/) Copyright (c) 2011-2018, Christopher Jeffrey (https://github.com/chjj/)
       //
@@ -69,18 +72,42 @@ cat <<EOF
       // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
       //
       // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-      `curl https://cdn.bootcdn.net/ajax/libs/marked/1.1.1/marked.min.js`
+      `curl https://cdn.jsdelivr.net/npm/marked@v5.1.0/marked.min.js`
 
-      // https://github.com/highlightjs/highlight.js:
-      `curl https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/highlight.min.js`
+      // https://github.com/markedjs/marked-highlight:
+      // MIT License
+      //
+      // Copyright (c) 2021 @markedjs
+      //
+      // Permission is hereby granted, free of charge, to any person obtaining a copy
+      // of this software and associated documentation files (the "Software"), to deal
+      // in the Software without restriction, including without limitation the rights
+      // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      // copies of the Software, and to permit persons to whom the Software is
+      // furnished to do so, subject to the following conditions:
+      //
+      // The above copyright notice and this permission notice shall be included in all
+      // copies or substantial portions of the Software.
+      //
+      // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+      // SOFTWARE.
+      `curl https://cdn.jsdelivr.net/npm/marked-highlight@v2.0.1/src/index.js | sed 's/export//g'`
 
-      marked.setOptions({
-        renderer: new marked.Renderer(),
-        highlight: function (code, lang) {
-          const validLanguage = hljs.getLanguage(lang) ? lang : 'plaintext';
-          return hljs.highlight(validLanguage, code).value;
+
+
+      marked.use(markedHighlight({
+        langPrefix: 'hljs language-',
+        highlight(code, lang) {
+          const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+          return hljs.highlight(code, { language }).value;
         }
-      });
+      }));
+
       const targetFile = location.pathname;
       const request = fetch(targetFile, {headers: {'Accept': 'text/markdown'}}).then((res) => {
         if (!res.ok) throw new Error(res.statusText+": "+res.status);
@@ -89,7 +116,7 @@ cat <<EOF
     </script>
     <script defer>
       request.then((text) => {
-        document.body.innerHTML = marked(text);
+        document.body.innerHTML = marked.parse(text);
         document.title = document.getElementsByTagName("h1")[0].textContent;
       }).catch((err) => document.body.innerHTML = "<code>Failed to load "+targetFile+": "+err.message+"</code>")
     </script>
