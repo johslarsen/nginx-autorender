@@ -118,7 +118,7 @@ cat <<EOF
       request.then((text) => {
         document.body.innerHTML = marked.parse(text);
         let h1 = document.getElementsByTagName("h1")[0];
-        if (h1) document.title = h1;
+        if (h1) document.title = h1.textContent;
       }).catch((err) => document.body.innerHTML = "<code>Failed to load "+targetFile+": "+err.message+"</code>")
     </script>
   </head>
