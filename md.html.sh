@@ -5,6 +5,10 @@ cat <<EOF
   <head>
     <meta charset="UTF-8">
     <style rel="stylesheet">
+      code {
+        display: block; // otherwise first line gets offset, and rest don't
+      }
+
       // https://github.com/highlightjs/highlight.js:
       // BSD 3-Clause License
       //
