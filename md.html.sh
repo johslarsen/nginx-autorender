@@ -5,8 +5,8 @@ cat <<EOF
   <head>
     <meta charset="UTF-8">
     <style rel="stylesheet">
-      code {
-        display: block; // otherwise first line gets offset, and rest don't
+      pre code { /* i.e. code \`\`\`blocks\`\`\`, but not \`inline\` */
+        display: block; /* otherwise first line gets offset, and rest don't */
       }
 
       // https://github.com/highlightjs/highlight.js:
