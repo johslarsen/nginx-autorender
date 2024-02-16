@@ -3,6 +3,7 @@ cat <<EOF
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <noscript><meta http-equiv="refresh" content="0;url=?raw=1"/></noscript>
     <meta charset="UTF-8">
     <style rel="stylesheet">
       pre code { /* i.e. code \`\`\`blocks\`\`\`, but not \`inline\` */
@@ -122,6 +123,8 @@ cat <<EOF
       }).catch((err) => document.body.innerHTML = "<code>Failed to load "+targetFile+": "+err.message+"</code>")
     </script>
   </head>
-  <body/>
+  <body>
+    <noscript>Rendered using JavaScript, so <a href="?raw=1">click here</a> to redirect to the source</noscript>
+  </body>
 </html>
 EOF

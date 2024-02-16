@@ -3,10 +3,13 @@ cat <<EOF
 <!DOCTYPE html>
 <html>
   <head>
+    <noscript><meta http-equiv="refresh" content="0;url=?raw=1"/></noscript>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <noscript>Rendered using JavaScript, so <a href="?raw=1">click here</a> to redirect to the source</noscript>
+
     <redoc/>
     <script>
       document.body.getElementsByTagName("redoc")[0].setAttribute("spec-url", location.pathname);
