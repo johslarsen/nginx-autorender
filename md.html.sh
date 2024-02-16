@@ -24,7 +24,6 @@ cat <<EOF
           content: "#";
       }
 
-      // https://github.com/highlightjs/highlight.js:
       // BSD 3-Clause License
       //
       // Copyright (c) 2006, Ivan Sagalaev.
@@ -54,55 +53,91 @@ cat <<EOF
       // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
       // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
       // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-      `curl https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@v11.8.0/build/styles/github.min.css`
+      // https://github.com/highlightjs/highlight.js:
+      `curl https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@v11.9.0/build/styles/github.min.css`
     </style>
     <script type="application/javascript">
       // https://github.com/highlightjs/highlight.js:
-      `curl https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@v11.8.0/build/highlight.min.js`
+      `curl https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@v11.9.0/build/highlight.min.js`
 
-      // https://github.com/markedjs/marked:
-      // Copyright (c) 2018+, MarkedJS (https://github.com/markedjs/) Copyright (c) 2011-2018, Christopher Jeffrey (https://github.com/chjj/)
+      // https://github.com/markdown-it/markdown-it
+      // Copyright (c) 2014 Vitaly Puzrin, Alex Kocharin.
       //
-      // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+      // Permission is hereby granted, free of charge, to any person
+      // obtaining a copy of this software and associated documentation
+      // files (the "Software"), to deal in the Software without
+      // restriction, including without limitation the rights to use,
+      // copy, modify, merge, publish, distribute, sublicense, and/or sell
+      // copies of the Software, and to permit persons to whom the
+      // Software is furnished to do so, subject to the following
+      // conditions:
       //
-      // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+      // The above copyright notice and this permission notice shall be
+      // included in all copies or substantial portions of the Software.
       //
-      // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-      `curl https://cdn.jsdelivr.net/npm/marked@v5.1.0/marked.min.js`
+      // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+      // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+      // OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+      // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+      // HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+      // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+      // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+      // OTHER DEALINGS IN THE SOFTWARE.
+      // https://github.com/markdown-it/markdown-it:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js`
+      // https://github.com/markdown-it/markdown-it-abbr:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-abbr@2.0.0/dist/markdown-it-abbr.min.js`
+      // https://github.com/markdown-it/markdown-it-deflist:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-deflist@3.0.0/dist/markdown-it-deflist.min.js`
+      // https://github.com/markdown-it/markdown-it-footnote:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-footnote@4.0.0/dist/markdown-it-footnote.min.js`
+      // https://github.com/markdown-it/markdown-it-ins:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-ins@4.0.0/dist/markdown-it-ins.min.js`
+      // https://github.com/markdown-it/markdown-it-mark:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-mark@4.0.0/dist/markdown-it-mark.min.js`
+      // https://github.com/markdown-it/markdown-it-sub:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-sub@2.0.0/dist/markdown-it-sub.min.js`
+      // https://github.com/markdown-it/markdown-it-sup:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-sup@2.0.0/dist/markdown-it-sup.min.js`
 
-      // https://github.com/markedjs/marked-highlight:
-      // MIT License
+      // https://github.com/valeriangalliat/markdown-it-anchor (UNLICENSE):
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-anchor@8.6.7/dist/markdownItAnchor.umd.min.js`
+
+      // Copyright (c) 2016, Revin Guillen
       //
-      // Copyright (c) 2021 @markedjs
+      // Permission to use, copy, modify, and/or distribute this software for any
+      // purpose with or without fee is hereby granted, provided that the above
+      // copyright notice and this permission notice appear in all copies.
       //
-      // Permission is hereby granted, free of charge, to any person obtaining a copy
-      // of this software and associated documentation files (the "Software"), to deal
-      // in the Software without restriction, including without limitation the rights
-      // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-      // copies of the Software, and to permit persons to whom the Software is
-      // furnished to do so, subject to the following conditions:
-      //
-      // The above copyright notice and this permission notice shall be included in all
-      // copies or substantial portions of the Software.
-      //
-      // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-      // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-      // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-      // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-      // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-      // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-      // SOFTWARE.
-      `curl https://cdn.jsdelivr.net/npm/marked-highlight@v2.0.1/src/index.js | sed 's/export//g'`
+      // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+      // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+      // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+      // ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+      // WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+      // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+      // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+      // https://github.com/revin/markdown-it-task-lists:
+      `curl https://cdn.jsdelivr.net/npm/markdown-it-task-lists@2.1.1/dist/markdown-it-task-lists.min.js`
 
 
-
-      marked.use(markedHighlight({
-        langPrefix: 'hljs language-',
-        highlight(code, lang) {
-          const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-          return hljs.highlight(code, { language }).value;
+      const md = markdownit({
+        highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(str, { language: lang }).value;
+          } catch (__) {}
         }
-      }));
+        return ''; // use external default escaping
+      }})
+        .use(markdownitAbbr)
+        .use(markdownItAnchor)
+        .use(markdownitDeflist)
+        .use(markdownitFootnote)
+        .use(markdownitIns)
+        .use(markdownitMark)
+        .use(markdownitSub)
+        .use(markdownitSup)
+        .use(markdownitTaskLists);
 
       const targetFile = location.pathname;
       const request = fetch(targetFile, {headers: {'Accept': 'text/markdown'}}).then((res) => {
@@ -112,7 +147,7 @@ cat <<EOF
     </script>
     <script defer>
       request.then((text) => {
-        document.body.innerHTML = marked.parse(text);
+        document.body.innerHTML = md.render(text);
         if (location.hash != "") location = location.hash; /* apply CSS :target rules to shadow DOM */
         document.querySelectorAll("h1,h2,h3,h4,h5,h6").forEach(e=>{ /* add fragment links to headers */
             e.classList.add('fragment');
