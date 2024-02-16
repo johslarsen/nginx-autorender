@@ -9,6 +9,20 @@ cat <<EOF
         display: block; /* otherwise first line gets offset, and rest don't */
       }
 
+      :target::after { /* add indicator to #anchor header */
+          content: " ⬅";
+          color: DarkOrange;
+          line-height: 1em; /* otherwise UTF-8 arrow grows the title height */
+      }
+
+      .fragment > a:last-child { /* "#<id>" link to the left of headers */
+          margin-left: 1ch;
+          opacity: 0.25;
+      }
+      .fragment:hover > a:last-child::after { /* hidden by default */
+          content: "#";
+      }
+
       // https://github.com/highlightjs/highlight.js:
       // BSD 3-Clause License
       //
@@ -98,6 +112,11 @@ cat <<EOF
     <script defer>
       request.then((text) => {
         document.body.innerHTML = marked.parse(text);
+        if (location.hash != "") location = location.hash; /* apply CSS :target rules to shadow DOM */
+        document.querySelectorAll("h1,h2,h3,h4,h5,h6").forEach(e=>{ /* add fragment links to headers */
+            e.classList.add('fragment');
+            e.appendChild(document.createElement("a")).href="#"+e.id;
+        });
         let h1 = document.getElementsByTagName("h1")[0];
         if (h1) document.title = h1.textContent;
       }).catch((err) => document.body.innerHTML = "<code>Failed to load "+targetFile+": "+err.message+"</code>")
