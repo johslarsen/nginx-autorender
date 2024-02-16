@@ -12,7 +12,7 @@ cat <<EOF
 
     <redoc/>
     <script>
-      document.body.getElementsByTagName("redoc")[0].setAttribute("spec-url", location.pathname);
+      document.body.getElementsByTagName("redoc")[0].setAttribute("spec-url", location.pathname + "?raw=1");
       document.title = location.pathname.split("/").reverse()[0];
     </script>
 
